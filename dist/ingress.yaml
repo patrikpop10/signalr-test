@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webserver 
+  annotations:
+      ingress.kubernetes.io/ssl-redirect: "false"
+  labels:
+    name: webserver 
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: myapp
+            port:
+              number: 8080
+
+
